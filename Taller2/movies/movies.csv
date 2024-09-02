@@ -1,0 +1,13 @@
+from openpyxl import load_workbook
+import csv
+
+# Cargar el archivo Excel
+wb = load_workbook('archivo.xlsx')
+sheet = wb.active
+
+# Guardar el archivo como CSV
+with open('archivo.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    for row in sheet.iter_rows(values_only=True):
+        csvwriter.writerow(row)
+
